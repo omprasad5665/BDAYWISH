@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>💖 happy birthday my love 💖</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Righteous&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #ffd6e8, #c1e4ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* floating hearts animation */
+        .floating-hearts {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.6;
+            color: #ff4d6d;
+            animation: floatUp 8s infinite ease-in-out;
+            filter: drop-shadow(0 0 10px #ffb3c6);
+        }
+        
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0.5);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.8;
+                transform: translateY(50vh) scale(1.2);
+            }
+            100% {
+                transform: translateY(-20vh) scale(0.8);
+                opacity: 0;
+            }
+        }
+
+        /* main card */
+        .birthday-card {
+            max-width: 650px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 60px 60px 40px 40px;
+            padding: 30px 20px;
+            border: 5px solid #ffffff;
+            box-shadow: 0 30px 50px rgba(255, 105, 135, 0.3);
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            font-family: 'Righteous', cursive;
+            font-size: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, #d43f6b, #2c6e9c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 3px 3px 0 #ffe5b4;
+            margin-bottom: 5px;
+        }
+
+        .emoji-line {
+            text-align: center;
+            font-size: 2.8rem;
+            filter: drop-shadow(0 4px 4px #fba0c0);
+            margin: 5px 0 20px;
+        }
+
+        /* image gallery */
+        .gallery-title {
+            font-family: 'Righteous', cursive;
+            font-size: 1.8rem;
+            color: #b63b61;
+            text-align: center;
+            margin: 15px 0 10px;
+        }
+
+        .moments-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin: 15px 0 25px;
+        }
+        
+        .moment-card {
+            background: #ffe1c6;
+            padding: 8px 8px 12px;
+            border-radius: 30px;
+            box-shadow: 0 12px 0 #b07d6b, 0 8px 15px #b38b9e;
+            border: 4px solid white;
+            width: 110px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .moment-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .moment-img {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 4px solid white;
+            background: #ffd9b0;
+        }
+        
+        .moment-card i {
+            font-size: 1.6rem;
+            color: #d44b78;
+            margin-top: 5px;
+        }
+
+        /* love meter slider */
+        .love-meter-section {
+            background: #ffe0f0;
+            border-radius: 50px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 4px solid white;
+            box-shadow: 0 12px 0 #b86f8b;
+        }
+
+        .love-meter-title {
+            font-family: 'Righteous', cursive;
+            font-size: 1.8rem;
+            color: #a13057;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .slider-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .heart-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(90deg, #ffb3c6, #ff4d6d);
+            border-radius: 30px;
+            outline: none;
+            border: 3px solid white;
+            box-shadow: 0 5px 0 #b14b68;
+        }
+
+        .heart-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 40px;
+            height: 40px;
+            background: #ff4d6d;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 5px 0 #a13e56;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+
+        .heart-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+        }
+
+        .love-value {
+            font-family: 'Righteous', cursive;
+            font-size: 2.5rem;
+            color: #b33b62;
+            background: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            border: 4px solid #ffa5c3;
+            display: inline-block;
+        }
+
+        .love-message {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #42213d;
+            background: #fff5d9;
+            padding: 12px 20px;
+            border-radius: 40px;
+            border: 3px dashed #ff8aae;
+            text-align: center;
+        }
+
+        /* letter */
+        .letter-block {
+            background: #fff6e8;
+            border-radius: 60px;
+            padding: 30px 20px;
+            border: 6px solid white;
+            box-shadow: 0 15px 0 #d9a37e;
+            margin: 20px 0;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.8rem;
+            color: #2d4b5a;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .heart-decoration {
+            font-size: 3rem;
+            animation: heartbeat 1.2s infinite;
+            display: inline-block;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            35% { transform: scale(1.1); }
+            45% { transform: scale(1.3); }
+            55% { transform: scale(1); }
+        }
+
+        /* interactive zone */
+        .interactive-zone {
+            background: #c5dff0;
+            border-radius: 60px;
+            padding: 25px 15px;
+            border: 5px solid white;
+            box-shadow: 0 15px 0 #628097;
+            margin: 20px 0;
+        }
+
+        .question {
+            font-family: 'Righteous', cursive;
+            font-size: 2.2rem;
+            color: #1f3a4a;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            position: relative;
+            min-height: 120px;
+        }
+
+        .btn {
+            font-family: 'Righteous', cursive;
+            font-size: 2.2rem;
+            padding: 15px 40px;
+            border-radius: 60px;
+            border: 4px solid white;
+            background: #fff4bc;
+            box-shadow: 0 8px 0 #b18f4e;
+            cursor: pointer;
+            transition: transform 0.15s ease-out;
+            margin: 5px;
+        }
+
+        .btn-yes {
+            background: #c1f0c1;
+            box-shadow: 0 8px 0 #6f9e6f;
+        }
+
+        .btn-no {
+            background: #ffc9c9;
+            box-shadow: 0 8px 0 #b16f6f;
+            position: relative;
+            will-change: transform;
+        }
+
+        .second-question {
+            display: none;
+            margin-top: 25px;
+        }
+
+        .final-message {
+            font-size: 2.5rem;
+            display: none;
+            justify-content: center;
+            gap: 15px;
+            color: #b62b5c;
+            margin-top: 20px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* feature cards */
+        .idea-section {
+            background: #fff0dd;
+            border-radius: 50px;
+            padding: 25px;
+            margin-top: 25px;
+            border: 5px solid white;
+            box-shadow: 0 10px 0 #c29b80;
+        }
+        
+        .idea-title {
+            font-family: 'Righteous', cursive;
+            font-size: 2rem;
+            color: #aa3d62;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .idea-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .idea-card {
+            background: white;
+            border-radius: 30px;
+            padding: 15px 10px;
+            border: 4px solid #ffb0c3;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 5px 0 #c27e94;
+        }
+        
+        .idea-card:hover {
+            transform: translateY(-5px);
+            background: #fff2d7;
+        }
+        
+        .idea-card i {
+            font-size: 2.5rem;
+            color: #d44b78;
+            margin-bottom: 8px;
+        }
+        
+        .idea-card span {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #3f2d56;
+            display: block;
+        }
+
+        /* modal styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            max-width: 500px;
+            width: 90%;
+            background: white;
+            border-radius: 60px;
+            padding: 30px 25px;
+            border: 8px solid #ffb3c6;
+            box-shadow: 0 25px 0 #b84a6a;
+            text-align: center;
+            animation: modalPop 0.3s;
+        }
+
+        @keyframes modalPop {
+            0% { transform: scale(0); }
+            80% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .modal-close {
+            background: #ff4d6d;
+            border: 4px solid white;
+            font-size: 1.8rem;
+            padding: 12px 30px;
+            border-radius: 50px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 6px 0 #a13e56;
+        }
+
+        .playlist-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: #f5e6ff;
+            padding: 12px 18px;
+            border-radius: 40px;
+            margin: 10px 0;
+            border: 3px solid white;
+            box-shadow: 0 4px 0 #b282a8;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+
+        .playlist-item:hover {
+            transform: scale(1.02);
+            background: #e6d0ff;
+        }
+
+        .countdown-display {
+            font-family: 'Righteous', cursive;
+            font-size: 3rem;
+            color: #b62b5c;
+            background: #fff0dd;
+            padding: 20px;
+            border-radius: 50px;
+            border: 5px solid white;
+            box-shadow: 0 8px 0 #c27e94;
+            margin: 15px 0;
+        }
+
+        .date-options {
+            display: grid;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .date-option {
+            background: #e0f0ff;
+            padding: 15px;
+            border-radius: 40px;
+            border: 4px solid white;
+            box-shadow: 0 5px 0 #7f9ab3;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1f4b6e;
+            cursor: pointer;
+        }
+
+        .notification-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #ff4d6d;
+            color: white;
+            padding: 25px 35px;
+            border-radius: 80px;
+            border: 6px solid white;
+            box-shadow: 0 15px 0 #a13e56;
+            font-family: 'Righteous', cursive;
+            font-size: 2rem;
+            z-index: 1000;
+            text-align: center;
+            animation: popIn 0.3s;
+            display: none;
+        }
+
+        @keyframes popIn {
+            0% { transform: translate(-50%, -50%) scale(0); }
+            80% { transform: translate(-50%, -50%) scale(1.1); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+
+        .angry-float {
+            position: fixed;
+            pointer-events: none;
+            font-size: 3.5rem;
+            z-index: 999;
+            animation: floatAngry 0.8s forwards;
+        }
+
+        @keyframes floatAngry {
+            0% { opacity: 0; transform: scale(0.3) translateY(0); }
+            40% { opacity: 1; transform: scale(1.5) translateY(-30px); }
+            100% { opacity: 0; transform: scale(0.8) translateY(-70px); }
+        }
+
+        footer {
+            font-weight: 600;
+            font-size: 1.4rem;
+            text-align: center;
+            margin-top: 20px;
+            color: #4b2e4a;
+        }
+
+        /* ===== MOBILE OPTIMIZATIONS (INSIDE STYLE TAG) ===== */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .emoji-line {
+                font-size: 2.2rem;
+            }
+            
+            .btn {
+                font-size: 1.8rem;
+                padding: 12px 25px;
+            }
+            
+            .question {
+                font-size: 1.8rem;
+            }
+            
+            .moments-gallery {
+                gap: 8px;
+            }
+            
+            .moment-card {
+                width: 80px;
+                padding: 5px 5px 8px;
+            }
+            
+            .moment-img {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .love-value {
+                font-size: 2rem;
+                padding: 8px 20px;
+            }
+            
+            .letter-block {
+                font-size: 1.5rem;
+                padding: 20px 15px;
+            }
+            
+            .idea-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .idea-card {
+                padding: 12px 8px;
+            }
+            
+            .idea-card i {
+                font-size: 2rem;
+            }
+            
+            .idea-card span {
+                font-size: 1.2rem;
+            }
+            
+            .button-container {
+                min-height: 100px;
+            }
+            
+            .birthday-card {
+                padding: 20px 15px;
+            }
+            
+            .btn-no {
+                max-width: 90%;
+                white-space: nowrap;
+            }
+        }
+
+        /* Improve touch targets */
+        .btn, .idea-card, .date-option, .playlist-item {
+            min-height: 44px;
+        }
+
+        /* Prevent text selection on buttons */
+        .btn, .idea-card {
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- floating hearts animation -->
+    <div class="floating-hearts" id="heartContainer"></div>
+
+    <!-- notification popup (appears after 5 NO clicks) -->
+    <div class="notification-popup" id="noClickNotification">
+        💝 OII PANNIII! 💝<br>
+        <small style="font-size: 1.4rem;">😤 ENA KOLUPA UNAKU... YES PERSA IRUKU LA CLICK PANU 😤😤</small>
+    </div>
+
+    <!-- MODAL OVERLAY (for feature popups) -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content" id="modalContent">
+            <!-- content will be dynamically inserted -->
+        </div>
+    </div>
+
+    <div class="birthday-card">
+        <h1>🎉 HAPPY BIRTHDAY DA MA CHLM! 🎉</h1>
+        <div class="emoji-line">🥳 👸🏼 💖 ✨ 🎂 🎁</div>
+
+        <!-- Image Gallery -->
+        <div class="gallery-title">💞 NAMBA FLASHBACK 🤭 PERSA VEKKALA NEE PATHUU YOSI NA NERLA ILA SO VIRTUAL AH IRUKEN NU KAMCHIRKEN😁 💞</div>
+        <div class="moments-gallery">
+            <div class="moment-card">
+                <img class="moment-img" src="C:\Users\om prasad\Downloads\ChatGPT Image Feb 21, 2026, 10_44_56 PM.png" alt="moment 1">
+                <i class="fas fa-heart"></i>
+            </div>
+            <div class="moment-card">
+                <img class="moment-img" src="C:\Users\om prasad\Downloads\ChatGPT Image Feb 21, 2026, 11_57_02 PM.png" alt="moment 2">
+                <i class="fas fa-star"></i>
+            </div>
+            <div class="moment-card">
+                <img class="moment-img" src="C:\Users\om prasad\Downloads\ChatGPT Image Feb 21, 2026, 10_27_46 PM.png" alt="moment 3">
+                <i class="fas fa-camera-retro"></i>
+            </div>
+            <div class="moment-card">
+                <img class="moment-img" src="C:\Users\om prasad\Downloads\ChatGPT Image Feb 21, 2026, 10_25_00 PM.png" alt="moment 4">
+                <i class="fas fa-infinity"></i>
+            </div>
+        </div>
+
+        <!-- LOVE METER SLIDER -->
+        <div class="love-meter-section">
+            <div class="love-meter-title">❤️ NEE ENA EVLO LOVE PANDRE SOLU PAPON ❤️</div>
+            <div class="slider-container">
+                <input type="range" min="0" max="100" value="100" class="heart-slider" id="loveSlider">
+                <div class="love-value" id="loveDisplay">100%</div>
+                <div class="love-message" id="loveMessage"> LOVE YOU 100 PERCENT HEHEHE MUAHH! 💕</div>
+            </div>
+        </div>
+
+        <!-- BIRTHDAY LETTER -->
+        <div class="letter-block">
+            <div class="heart-decoration">💖</div>
+            <span style="font-size: 2.5rem;">YEN CHLM HEMA ,</span><br><br>
+           HAPPY BIRTHDAY DA MA EPPOME HAPPY A IRU 🎂<br><br>
+            UNAKAGA NA EPPOME IRUPEN YEN BDAY KU NEE IRUNTHA ANA UON BDAY KU ENALA UON KUDA IRUKAMUDILA NU FEEL PANDRE NEXT YEAR LENDHU ELLAN YEAR ON UON KUDA IRUNTHU UON ASA LAN NIRAVEKKANONU TRY PANDRE NEE YEN LIFE LA VANTHATHUKU THANKS AND AGAIN I LOVE YOU DA MA💘😘💘😘💘😘 💘 NEE THAN YEN CHLM AND YENN BUJJ NE THAN YEN...🌍  ITHU UNAKGA 2 VARAMA PANDRE SO FAKE APDI IPDI SOLI ENA HURT PANIRATHA YEN THANGO UNAKAGA MATON THAN PANNE MUAHAHHH 😘😘😘 HAPPPIEST BIRTHEDAY DA MA🥳🥳🥰🥰😘😘<br><br>
+            <i class="fas fa-heart" style="color:#d43f6b; font-size:2.5rem;"></i> 
+            <i class="fas fa-heart" style="color:#d43f6b; font-size:2.5rem;"></i> 
+            <i class="fas fa-heart" style="color:#d43f6b; font-size:2.5rem;"></i><br>
+          BY
+           YOUR LOVELY HUSBAND 1 AND ONLY , OM😁😁
+        </div>
+
+        <!-- INTERACTIVE QUESTIONS -->
+        <div class="interactive-zone">
+            <div id="firstQuestionBlock">
+                <div class="question">💘NEE ENA EPOME LOVE PANUVIYA? 💘</div>
+                <div class="button-container" id="buttonContainer">
+                    <button class="btn btn-yes" id="yesFirstBtn"><i class="fas fa-check-circle"></i> YES</button>
+                    <button class="btn btn-no" id="noFirstBtn"><i class="fas fa-times-circle"></i> NO</button>
+                </div>
+            </div>
+
+            <div class="second-question" id="secondQuestionBlock">
+                <div class="question">🤔 NEXT BIRTHDAY YENKUDA IRUPIYA 🫠</div>
+                <div class="button-container">
+                    <button class="btn btn-yes" id="yesSecondBtn"><i class="fas fa-check-circle"></i> YES always!</button>
+                    <button class="btn btn-no" id="noSecondBtn"><i class="fas fa-ban"></i> NO</button>
+                </div>
+                <div class="final-message" id="finalMessage">
+                    🎊❤️‍🔥 I LOVE YOU DA MA YEN BUJJJ CHLMAE UNA KATTIPUDIKA POLA IRUKU DA MA ❤️‍🔥🎊
+                </div>
+            </div>
+        </div>
+
+        <!-- FEATURE CARDS -->
+        <div class="idea-section">
+            <div class="idea-title">✨ INO MUDILA FEELINGS IRUKU KONJO KILLA PAARU ✨</div>
+            <div class="idea-grid">
+                <div class="idea-card" onclick="openFeature('video')">
+                    <i class="fas fa-video"></i>
+                    <span>kutty secret message 🤫😁</span>
+                </div>
+                <div class="idea-card" onclick="openFeature('playlist')">
+                    <i class="fas fa-headphones-alt"></i>
+                    <span> Dedicate pandra songs 🥰</span>
+                </div>
+                <div class="idea-card" onclick="openFeature('countdown')">
+                    <i class="fas fa-clock"></i>
+                    <span>Una paka vara timer 😜 </span>
+                </div>
+                <div class="idea-card" onclick="openFeature('date')">
+                    <i class="fas fa-glass-cheers"></i>
+                    <span>Iniki pandra plans 😜 </span>
+                </div>
+            </div>
+        </div>
+
+        <footer>💕 THURAMA IRUNTHALON ONA IRUPOM MA💕</footer>
+    </div>
+
+    <script>
+        // FLOATING HEARTS
+        const heartContainer = document.getElementById('heartContainer');
+        for (let i = 0; i < 25; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 10 + 's';
+            heart.style.animationDuration = (6 + Math.random() * 8) + 's';
+            heart.style.fontSize = (1.5 + Math.random() * 2.5) + 'rem';
+            heartContainer.appendChild(heart);
+        }
+
+        // LOVE SLIDER
+        const loveSlider = document.getElementById('loveSlider');
+        const loveDisplay = document.getElementById('loveDisplay');
+        const loveMessage = document.getElementById('loveMessage');
+        
+        const messages = [
+            "Ena ma ipdi pandra pavon la 🥹",
+            "iyyo ivlo thana 🥲",
+            "Ino konjo konjoo  😅",
+            "hehehe ino litta 😁",
+            "AAhh yen chlm yen bujjjjj muahhhh ithe level eppome irukuton uon manasula 😍🥰😘💞"
+        ];
+        
+        loveSlider.addEventListener('input', function() {
+            const val = this.value;
+            loveDisplay.textContent = val + '%';
+            
+            if (val < 20) loveMessage.textContent = messages[0];
+            else if (val < 40) loveMessage.textContent = messages[1];
+            else if (val < 60) loveMessage.textContent = messages[2];
+            else if (val < 80) loveMessage.textContent = messages[3];
+            else loveMessage.textContent = messages[4];
+        });
+
+        // ===== AGGRESSIVE RUNAWAY NO BUTTON =====
+        const noFirst = document.getElementById('noFirstBtn');
+        const container = document.getElementById('buttonContainer');
+        const notification = document.getElementById('noClickNotification');
+        let noClickCount = 0;
+
+        // SUPER ACTIVE HOVER - moves every time mouse gets near
+        noFirst.addEventListener('mouseenter', (e) => {
+            e.preventDefault();
+            moveNoButtonLikeCrazy();
+            spawnAngry(noFirst);
+        });
+
+        // Also moves on mouse move for extra annoyance
+        noFirst.addEventListener('mousemove', (e) => {
+            e.preventDefault();
+            // 30% chance to move on mousemove for constant running away
+            if (Math.random() < 0.3) {
+                moveNoButtonLikeCrazy();
+            }
+        });
+
+        // Click handler with counter
+        noFirst.addEventListener('click', (e) => {
+            e.preventDefault();
+            noClickCount++;
+            moveNoButtonLikeCrazy();
+            spawnAngry(noFirst);
+            spawnAngry(noFirst); // double angry on click
+            
+            // Show notification after 5 clicks
+            if (noClickCount >= 5) {
+                notification.style.display = 'block';
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                    noClickCount = 0;
+                }, 3000);
+            }
+        });
+
+        // Touch support for mobile
+        noFirst.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            noClickCount++;
+            moveNoButtonLikeCrazy();
+            spawnAngry(noFirst);
+            
+            if (noClickCount >= 5) {
+                notification.style.display = 'block';
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                    noClickCount = 0;
+                }, 3000);
+            }
+        });
+
+        // The main movement function - makes button run anywhere
+        function moveNoButtonLikeCrazy() {
+            const containerRect = container.getBoundingClientRect();
+            const btnRect = noFirst.getBoundingClientRect();
+            
+            // Calculate available space
+            const maxX = containerRect.width - btnRect.width - 20;
+            const maxY = containerRect.height - btnRect.height - 20;
+            
+            if (maxX > 20 && maxY > 20) {
+                // Generate random position within container
+                const newX = Math.random() * maxX;
+                const newY = Math.random() * maxY;
+                
+                // Apply the transform
+                noFirst.style.transform = `translate(${newX}px, ${newY}px)`;
+                noFirst.style.transition = 'transform 0.15s ease-out';
+            } else {
+                // Fallback if container is too small
+                noFirst.style.transform = `translate(${Math.random() * 150 - 75}px, ${Math.random() * 100 - 50}px)`;
+            }
+        }
+
+        // Spawn angry emojis
+        function spawnAngry(btn) {
+            const angryEmojis = ['😠','😤','👿','💢','😾','🤬','😡'];
+            const div = document.createElement('div');
+            div.className = 'angry-float';
+            div.innerText = angryEmojis[Math.floor(Math.random() * angryEmojis.length)];
+            const rect = btn.getBoundingClientRect();
+            div.style.left = (rect.left + rect.width/2 + (Math.random()*60-30)) + 'px';
+            div.style.top = (rect.top - 20 + (Math.random()*40-20)) + 'px';
+            document.body.appendChild(div);
+            setTimeout(() => div.remove(), 700);
+        }
+
+        // YES first button
+        document.getElementById('yesFirstBtn').addEventListener('click', () => {
+            document.getElementById('firstQuestionBlock').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('firstQuestionBlock').style.display = 'none';
+                document.getElementById('secondQuestionBlock').style.display = 'block';
+            }, 300);
+        });
+
+        // Second question buttons
+        const noSecond = document.getElementById('noSecondBtn');
+        noSecond.addEventListener('mouseenter', () => spawnAngry(noSecond));
+        noSecond.addEventListener('click', (e) => {
+            e.preventDefault();
+            spawnAngry(noSecond);
+            noSecond.style.transform = 'scale(0)';
+            setTimeout(() => {
+                noSecond.style.display = 'none';
+                alert('💢 only YES! 💢');
+            }, 150);
+        });
+
+        document.getElementById('yesSecondBtn').addEventListener('click', () => {
+            document.getElementById('finalMessage').style.display = 'flex';
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const em = document.createElement('div');
+                    em.innerText = '🎉💖🥳';
+                    em.style.position = 'fixed';
+                    em.style.left = Math.random() * 100 + '%';
+                    em.style.top = '50%';
+                    em.style.fontSize = '4rem';
+                    em.style.pointerEvents = 'none';
+                    em.style.animation = 'floatAngry 1s forwards';
+                    document.body.appendChild(em);
+                    setTimeout(() => em.remove(), 900);
+                }, i * 120);
+            }
+        });
+
+        // Feature modal functions
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalContent = document.getElementById('modalContent');
+
+        window.openFeature = function(type) {
+            let content = '';
+            
+            switch(type) {
+                case 'video':
+                    case 'video':
+    content = `
+        <h2 style="font-family: 'Righteous'; font-size:2.5rem; color:#b62b5c; margin-bottom:15px;">
+            🎥 video message
+        </h2>
+        <div style="background:#ffd9e5; padding:20px; border-radius:40px; border:4px solid white;">
+            <video controls width="100%" style="border-radius:20px;">
+                <source src="videobirthday-video.mp4" type="video/mp4">
+                Your browser doesn't support video playback.
+            </video>
+            <p style="margin-top:10px;">❤️ UNAKAGA ORU KUTTY SUPRISE ANA ENA PAKA PUDIKILA NA SKIP PANIDU ❤️</p>
+        </div>
+        <button class="modal-close" onclick="closeModal()">close</button>
+    `;
+    break;
+                    
+                case 'playlist':
+                    content = `
+                        <h2 style="font-family: 'Righteous'; font-size:2.5rem; color:#b62b5c; margin-bottom:15px;">
+                            🎧 NA UNNAKU DEDICATE PANRA SONGS
+                        </h2>
+                        <div class="playlist-item" onclick="window.open('https://youtu.be/ATElufr0OiE?si=PP1-KOndoMZuYOUG', '_blank')">
+                            <i class="fas fa-play-circle"></i>
+                            <span style="font-size:1.4rem; font-weight:600;">ENAKU IPOVON NEE EPOVON NEE SO ATHUKU 1 SONG </span>
+                        </div>
+                        <div class="playlist-item" onclick="window.open('https://youtu.be/2P_0Q8CIjw8?si=L3hJ40S0nH18y4WY', '_blank')">
+                            <i class="fas fa-play-circle"></i>
+                            <span style="font-size:1.4rem; font-weight:600;">UONKUDA LIFE SPEND EPDI PANUVAN SO ATHUKU 1 SONG</span>
+                        </div>
+                        <div class="playlist-item" onclick="window.open('https://youtu.be/38CnOZCZAAg?si=jOrPxXAzYwpzD0bC', '_blank')">
+                            <i class="fas fa-play-circle"></i>
+                            <span style="font-size:1.4rem; font-weight:600;">ORU VELA NEE ENA VITU PONA SO ATHUKON 1 SONG </span>
+                        </div>
+                        <button class="modal-close" onclick="closeModal()">close</button>
+                    `;
+                    break;
+                    
+                case 'countdown':
+                    const targetDate = new Date('2026-02-28'); // CHANGE THIS TO YOUR DATE
+                    const now = new Date();
+                    const diff = targetDate - now;
+                    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    
+                    content = `
+                        <h2 style="font-family: 'Righteous'; font-size:2.5rem; color:#b62b5c; margin-bottom:15px;">
+                            ⏰ COUNTDOWN NAMBA NEXT MEET PANDRATHUKU
+                        </h2>
+                        <div class="countdown-display">
+                            ${days > 0 ? days : '0'} days ${hours > 0 ? hours : '0'} hours
+                        </div>
+                        <p style="font-size:1.4rem;">until we're together again! 🥰</p>
+                        <button class="modal-close" onclick="closeModal()">close</button>
+                    `;
+                    break;
+                    
+                case 'date':
+                    content = `
+                        <h2 style="font-family: 'Righteous'; font-size:2.5rem; color:#b62b5c; margin-bottom:15px;">
+                            🍷 NERLA ILA SO ONLINE LA ENA PANLAN INIKI
+                        </h2>
+                        <div class="date-options">
+                            <div class="date-option" onclick="alert('🎬 Movie night iniki! ❤️ ')">
+                                🎬 senthu movie pakkalama
+                            </div>
+                            <div class="date-option" onclick="alert('🎮 online game adlamaa ❤️')">
+                                🎮 online game adlamaa
+                            </div>
+                            <div class="date-option" onclick="alert(' ❤️ video call la uon azhaga pakkava ❤️')">
+                                ❤️ iniki namaba palaya mari video call la pesi thunglama
+                            </div>
+                        </div>
+                        <button class="modal-close" onclick="closeModal()">close</button>
+                    `;
+                    break;
+            }
+            
+            modalContent.innerHTML = content;
+            modalOverlay.style.display = 'flex';
+        };
+
+        window.closeModal = function() {
+            modalOverlay.style.display = 'none';
+        };
+
+        // Close modal when clicking outside
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
